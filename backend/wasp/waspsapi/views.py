@@ -26,6 +26,6 @@ class SignView(APIView):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 refresh = RefreshToken.for_user(user)
-            return Response({'refresh': str(refresh), 'access': str(refresh.access_token)}, status=201)
+                return Response({'refresh': str(refresh), 'access': str(refresh.access_token)}, status=201)
         return Response(serializer.errors, status=400)
 

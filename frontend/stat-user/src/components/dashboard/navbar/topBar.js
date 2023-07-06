@@ -24,11 +24,13 @@ export default function TopBar({ open }) {
         >
             <Toolbar sx={{ pr: "24px" }}>
                 <Stack
-                    direction='now'
+                    direction='row'
                     spacing={1}
                     sx={{
                         flexGrow: 1,
-                        marginLeft: 40
+                        marginLeft: 40,
+                        transition:'0.4s',
+                        ...(!open && { marginLeft: 12 })
                     }}>
                     <Typography
                         component="h1"

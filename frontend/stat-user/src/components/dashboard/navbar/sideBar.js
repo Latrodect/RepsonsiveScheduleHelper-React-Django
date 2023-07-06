@@ -51,7 +51,7 @@ export default function Dashboard({ children }) {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <TopBar open={open} setOpen={setOpen} />
+        <TopBar open={open} />
         <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
@@ -80,7 +80,7 @@ export default function Dashboard({ children }) {
                     <MenuIcon />
                 </IconButton>
           </Toolbar>
-          <List component="nav">
+          <List component="nav" >
             <Divider sx={{ my: 1 }} />
             <ListSubheader sx={{ 
               textAlign: "right", 

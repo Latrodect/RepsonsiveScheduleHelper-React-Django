@@ -2,6 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useCallback, useEffect } from "react";
 import jwt_decode from 'jwt-decode'
 import RedirectDialog from './redirectDialog'
+import SideBar from '../../components/dashboard/navbar/sideBar'
 
 function TokenValidationExp({ children }) {
     const location = useLocation()
@@ -23,10 +24,12 @@ function TokenValidationExp({ children }) {
             navigate(location.pathname)
         }
     }, [token, location, isTokenExpired, navigate])
-    if ((token === null || isTokenExpired(token)) && location.pathname !== '/sign-in' ) {
+    if ((token === null || isTokenExpired(token)) && location.pathname !== '/sign-in') {
         return <RedirectDialog />
-    } else {
+    } else if (location.pathname === '/sign-in') {
         return children
+    } else {
+        return <SideBar>{children}</SideBar>
     }
 }
 

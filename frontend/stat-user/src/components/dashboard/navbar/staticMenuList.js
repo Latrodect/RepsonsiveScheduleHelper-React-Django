@@ -2,71 +2,50 @@ import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import ListSubheader from '@mui/material/ListSubheader';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import {PrimaryMenuItems} from '../../../utils/utils'
+import {useNavigate} from "react-router-dom"
 
-export const mainListItems = (
-  <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton>
-  </React.Fragment>
-);
 
-export const secondaryListItems = (
-  <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItemButton>
-  </React.Fragment>
-);
+export default function StaticMenu(){
+  const navigate = useNavigate()
+
+  return(
+    <>
+    {
+      PrimaryMenuItems.map((item)=>{
+        return <ListItemButton 
+        sx={{
+          height:"65px",
+          width:"90%",
+          textAlign:"left",
+          ml:2,
+          borderRadius:"10px",
+          paddingLeft:5,
+          paddingRight:5
+        }}
+        onClick={()=>(navigate(item.path))}>
+          <ListItemIcon
+          sx={{
+            color:"#313131",
+            ml:2
+          }}>
+            {item.icon}
+          </ListItemIcon>
+          <ListItemText
+          primary={item.title}
+          primaryTypographyProps={{
+            overflow:"hidden",
+            textOverflow:"ellipsis",
+            whiteSpace:"nowrap",
+            display:"block",
+            color:"rgb(99,115,129)",
+            fontSize: "Public Sans', sans-serif",
+            fontWeight:"600",
+            textTransform:"capitalize"
+          }}/>
+        </ListItemButton>
+      })
+    }
+    </>
+  )
+}

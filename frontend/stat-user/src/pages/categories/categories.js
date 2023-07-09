@@ -1,5 +1,5 @@
 import { Avatar } from '@mui/material';
-import EnhancedTable from '../../components/common_components/commonTable'
+import EnhancedTable from '../../components/common/commonTable'
 import Box from '@mui/material/Box';
 
 
@@ -90,7 +90,8 @@ export default function CategoriesPage() {
             sx={{
                 ml: 8,
                 mr: 8,
-                mt: 30
+                mt: 30,
+                width:'100%'
             }}>
             <EnhancedTable
                 paginationIsActive={true}

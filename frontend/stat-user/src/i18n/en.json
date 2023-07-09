@@ -1,0 +1,9 @@
+{
+    "sidebar": {
+        "dashboard": "Dashboard",
+        "categories": "Categories",
+        "products": "Products",
+        "reports": "Reports",
+        "plans": "Plans"
+    }
+}

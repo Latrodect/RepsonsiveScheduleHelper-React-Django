@@ -1,35 +1,35 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useCallback, useEffect } from "react";
-import jwt_decode from 'jwt-decode'
-import RedirectDialog from './redirectDialog'
-import SideBar from '../../components/dashboard/navbar/sideBar'
+import jwt_decode from "jwt-decode";
+import RedirectDialog from "./redirectDialog";
+import SideBar from "../../components/dashboard/navbar/sideBar";
 
 function TokenValidationExp({ children }) {
-    const location = useLocation()
-    const token = localStorage.getItem('token')
-    const navigate = useNavigate()
+    const location = useLocation();
+    const token = localStorage.getItem("refreshToken");
+    const navigate = useNavigate();
 
     const isTokenExpired = useCallback(() => {
-        const decodeToken = jwt_decode(token)
+        const decodeToken = jwt_decode(token);
         const currentTime = Date.now() / 1000;
         return decodeToken.exp < currentTime;
-    }, [token])
+    }, [token]);
 
     useEffect(() => {
         if (token === null || isTokenExpired(token)) {
             setTimeout(() => {
-                navigate('/sign-in')
-            }, 5000)
+                navigate("/sign-in");
+            }, 5000);
         } else {
-            navigate(location.pathname)
+            navigate(location.pathname);
         }
-    }, [token, location, isTokenExpired, navigate])
-    if ((token === null || isTokenExpired(token)) && location.pathname !== '/sign-in') {
-        return <RedirectDialog />
-    } else if (location.pathname === '/sign-in') {
-        return children
+    }, [token, isTokenExpired, navigate]);
+    if ((token === null || isTokenExpired(token)) && location.pathname !== "/sign-in") {
+        return <RedirectDialog />;
+    } else if (location.pathname === "/sign-in") {
+        return children;
     } else {
-        return <SideBar>{children}</SideBar>
+        return children;
     }
 }
 

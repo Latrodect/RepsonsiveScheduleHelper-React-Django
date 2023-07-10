@@ -7,12 +7,12 @@ import {
   Toolbar,
   IconButton,
 } from "@mui/material";
-import NotificationIcon from "@mui/icons-material/Notifications";
 import ProfileImage from "../../../assets/images/profile.jpeg";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import LangDropdown from "./LangDropdown";
+import NotificationDropdown from './NotificationDropdown'
 
 export default function TopBar({ open }) {
   return (
@@ -67,7 +67,7 @@ export default function TopBar({ open }) {
           </IconButton>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
-              <NotificationIcon />
+              <NotificationDropdown/>
             </Badge>
           </IconButton>
           <Avatar alt="profile" src={ProfileImage} />

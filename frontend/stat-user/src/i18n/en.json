@@ -5,5 +5,9 @@
         "products": "Products",
         "reports": "Reports",
         "plans": "Plans"
+    },
+    "notification": {
+        "title":"Notifications",
+        "update-time":"Update Time:"
     }
 }

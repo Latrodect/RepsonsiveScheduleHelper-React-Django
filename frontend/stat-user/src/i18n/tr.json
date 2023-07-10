@@ -5,5 +5,9 @@
         "products": "Ürünler",
         "reports": "Raporlar",
         "plans": "Planlar"
+    },
+    "notification": {
+        "title":"Son Mesajlar",
+        "update-time":"Güncelleme Zamanı:"
     }
 }

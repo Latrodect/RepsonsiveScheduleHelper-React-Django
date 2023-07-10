@@ -9,7 +9,7 @@ import {
   Tooltip,
   Divider,
   Button,
-  Alert
+  Alert,
 } from "@mui/material";
 import NotificationIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
@@ -17,6 +17,8 @@ import ProfileImage from "../../../assets/images/profile.jpeg";
 import ProfileImageTwo from "../../../assets/images/profile_two.png";
 import ProfileImageThree from "../../../assets/images/profile_three.jpeg";
 import useLang from "../../../hooks/useLang";
+import SettingsIcon from "@mui/icons-material/Settings";
+
 // import { makeStyles } from "@mui/styles";
 
 const notifications = [
@@ -24,32 +26,36 @@ const notifications = [
     src: ProfileImage,
     title: "New Product Dispatch",
     content: "Your latest product selled too much. Buy again from Amazon.ca",
-    time: "1 day ago."
+    time: "1 day ago.",
   },
   {
     src: ProfileImageTwo,
     title: "Leson Learnt",
-    content: "Discover the secrets of successful product launches and expert go to market strategies. Master the art of product launches through with this step by step process.",
-    time: "5 day ago."
+    content:
+      "Discover the secrets of successful product launches and expert go to market strategies. Master the art of product launches through with this step by step process.",
+    time: "5 day ago.",
   },
   {
     src: ProfileImageTwo,
     title: "Whether Message",
-    content: "Whether you want to learn more about choosing a water treatment system, find out where you can get information about your tap water quality or discover what .",
-    time: "2 week ago."
+    content:
+      "Whether you want to learn more about choosing a water treatment system, find out where you can get information about your tap water quality or discover what .",
+    time: "2 week ago.",
   },
   {
     src: ProfileImageThree,
     title: "Share Experience ",
-    content: "Discover the secrets of successful product launches and expert go to market strategies. Master the art of product launches through with this step by step process.",
-    time: "5 day ago."
+    content:
+      "Discover the secrets of successful product launches and expert go to market strategies. Master the art of product launches through with this step by step process.",
+    time: "5 day ago.",
   },
   {
     src: ProfileImage,
     title: "Amazon Privacy",
-    content: "Whether you want to learn more about choosing a water treatment system, find out where you can get information about your tap water quality or discover what .",
-    time: "2 week ago."
-  }
+    content:
+      "Whether you want to learn more about choosing a water treatment system, find out where you can get information about your tap water quality or discover what .",
+    time: "2 week ago.",
+  },
 ];
 
 const ITEM_HEIGHT = 48;
@@ -103,27 +109,45 @@ export default function NotificationDropdown() {
             width: "400px",
           },
         }}
-      > 
+      >
         <Stack direction="column">
-          <Typography
-            sx={{
-              fontSize: "18px",
-              fontWeight: "500",
-              ml: 2,
-              mt: 1,
-              color: "#323232",
-            }}
-            variant="h4"
+          <Stack
+            direction="row"
+            sx={{ alignItems: "center", justifyContent: "space-between" }}
           >
-            {t("notification.title")}
-          </Typography>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                fontWeight: "500",
+                ml: 2,
+                mt: 1,
+                color: "#323232",
+              }}
+              variant="h4"
+            >
+              {t("notification.title")}
+            </Typography>
+            <SettingsIcon sx={{ mr: 2 }} />
+          </Stack>
           <Divider sx={{ mt: 2 }} />
         </Stack>
-        <Stack direction="row" spacing={1} sx={{justifyContent:"center", mt:2, mb:2}}>
-        <Alert severity="success">All</Alert>
-        <Alert severity="warning">Unread</Alert>
-        <Alert severity="info">Archive</Alert>
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{ justifyContent: "center", mt: 2, mb: 2 }}
+        >
+          <Alert severity="success" sx={{ cursor: "pointer" }}>
+            All
+          </Alert>
+          <Alert severity="warning" sx={{ cursor: "pointer" }}>
+            Unread
+          </Alert>
+          <Alert severity="info" sx={{ cursor: "pointer" }}>
+            Archive
+          </Alert>
         </Stack>
+
+        <Divider sx={{ mt: 2 }} />
         {notifications.map((item) => (
           <MenuItem
             key={item.title}
@@ -143,18 +167,18 @@ export default function NotificationDropdown() {
                   {item.title}
                 </Typography>
                 <Typography
-                    variant="body1"
-                    sx={{
-                      fontSize: "11px",
-                      color: "gray",
-                      width: "300px",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {t('notification.update-time')} {item.time}  
-                  </Typography>
+                  variant="body1"
+                  sx={{
+                    fontSize: "11px",
+                    color: "gray",
+                    width: "300px",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {t("notification.update-time")} {item.time}
+                </Typography>
                 <Tooltip title={item.content}>
                   <Typography
                     variant="body1"
@@ -170,7 +194,7 @@ export default function NotificationDropdown() {
                     {item.content}
                   </Typography>
                 </Tooltip>
-                <Stack direction="row" spacing={2} sx={{mt:2}}>
+                <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
                   <Button
                     variant="contained"
                     sx={{
@@ -207,33 +231,34 @@ export default function NotificationDropdown() {
                   <Button
                     variant="outline"
                     sx={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        position: "relative",
-                        boxSizing: "border-box",
-                        outline: "0px",
-                        border: "0px currentcolor",
-                        margin: "0px",
-                        cursor: "pointer",
-                        verticalAlign: "middle",
-                        appearance: "none",
-                        textDecoration: "none",
-                        fontWeight: "700",
-                        lineHeight: "1.71429",
-                        textTransform: "unset",
-                        fontFamily: "'Public Sans', sans-serif",
-                        minWidth: "64px",
-                        padding: "4px 8px",
-                        borderRadius: "8px",
-                        transition: "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-                        border: "1px solid rgba(145, 158, 171, 0.32)",
-                        boxShadow: "none",
-                        color: "rgb(33, 43, 54)",
-                        backgroundColor: "transparent",
-                        height: "30px",
-                        fontSize: "13px",
-                      }}
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "relative",
+                      boxSizing: "border-box",
+                      outline: "0px",
+                      border: "0px currentcolor",
+                      margin: "0px",
+                      cursor: "pointer",
+                      verticalAlign: "middle",
+                      appearance: "none",
+                      textDecoration: "none",
+                      fontWeight: "700",
+                      lineHeight: "1.71429",
+                      textTransform: "unset",
+                      fontFamily: "'Public Sans', sans-serif",
+                      minWidth: "64px",
+                      padding: "4px 8px",
+                      borderRadius: "8px",
+                      transition:
+                        "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+                      border: "1px solid rgba(145, 158, 171, 0.32)",
+                      boxShadow: "none",
+                      color: "rgb(33, 43, 54)",
+                      backgroundColor: "transparent",
+                      height: "30px",
+                      fontSize: "13px",
+                    }}
                   >
                     Decline
                   </Button>
@@ -242,6 +267,13 @@ export default function NotificationDropdown() {
             </Stack>
           </MenuItem>
         ))}
+        <Divider sx={{ mt: 2 }} />
+        <Button sx={{ width: "100%", color: "#313131", fontSize: "12px" }}>
+          See More...
+        </Button>
+        <Typography sx={{ textAlign: "center", fontSize: "10px" }}>
+          Check your messages.
+        </Typography>
       </Menu>
     </div>
   );

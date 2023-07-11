@@ -8,6 +8,8 @@
     },
     "notification": {
         "title":"Notifications",
-        "update-time":"Update Time:"
+        "update-time":"Update Time:",
+        "button-accept": "Read",
+        "button-decline": "Decline"
     }
 }

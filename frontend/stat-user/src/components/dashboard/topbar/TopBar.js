@@ -12,7 +12,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import LangDropdown from "./LangDropdown";
-import NotificationDropdown from './NotificationDropdown'
+import NotificationDropdown from '../notifications/NotificationDropdown'
 
 export default function TopBar({ open }) {
   return (

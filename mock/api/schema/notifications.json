@@ -1,0 +1,40 @@
+[{
+  "id":1,
+  "src": "ProfileImage",
+  "title": "New Product Dispatch",
+  "content": "Your latest product selled too much. Buy again from Amazon.ca",
+  "time": "1 day ago.",
+  "status": ["Read", "success"]
+},
+{
+  "id":2,
+  "src": "ProfileImage",
+  "title": "New Product Dispatch",
+  "content": "Your latest product selled too much. Buy again from Amazon.ca",
+  "time": "1 day ago.",
+  "status": ["Read", "success"]
+},
+{
+  "id":3,
+  "src": "ProfileImage",
+  "title": "New Product Dispatch",
+  "content": "Your latest product selled too much. Buy again from Amazon.ca",
+  "time": "1 day ago.",
+  "status": ["Read", "success"]
+},
+{
+  "id":4,
+  "src": "ProfileImage",
+  "title": "New Product Dispatch",
+  "content": "Your latest product selled too much. Buy again from Amazon.ca",
+  "time": "1 day ago.",
+  "status": ["Read", "success"]
+},
+{
+  "id":5,
+  "src": "ProfileImage",
+  "title": "New Product Dispatch",
+  "content": "Your latest product selled too much. Buy again from Amazon.ca",
+  "time": "1 day ago.",
+  "status": ["Read", "success"]
+}]

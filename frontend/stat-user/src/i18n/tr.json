@@ -8,6 +8,8 @@
     },
     "notification": {
         "title":"Son Mesajlar",
-        "update-time":"Güncelleme Zamanı:"
+        "update-time":"Güncelleme Zamanı:",
+        "button-accept": "Okundu",
+        "button-decline": "Yoksay"
     }
 }

@@ -94,9 +94,9 @@ export default function CategoriesPage() {
         isOnclickActive={false}
         columnSchema={headCells}
         source={data}
-        squeeze={false}
+        squeeze={true}
         toolbarTitle={"First Common Table"}
-        hasSlot={true}
+        hasSlot={false}
         slot={<Avatar></Avatar>}
       ></EnhancedTable>
     </Box>

@@ -121,7 +121,7 @@ export default function SideBar({ children }) {
             <StaticMenu open={open} />
           </List>
 
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: "5px", ...(!open && { display: "none" }), }}>
             <Copyright />
           </div>
         </Drawer>

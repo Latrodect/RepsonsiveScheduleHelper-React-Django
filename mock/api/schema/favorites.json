@@ -1,0 +1,27 @@
+[
+  { "id": 1,
+   "categories": "garden", 
+   "selling_count": 12, 
+   "notify": false 
+},
+  { "id": 1, 
+  "categories": "music", 
+  "selling_count": 32, 
+  "notify": true 
+},
+  { "id": 1, 
+  "categories": "home", 
+  "selling_count": 41, 
+  "notify": true 
+},
+  { "id": 1, 
+  "categories": "accessory", 
+  "selling_count": 6,
+   "notify": false
+ },
+  { "id": 88851, 
+  "categories": "garden", 
+  "selling_count": 12, 
+  "notify": false 
+}
+]

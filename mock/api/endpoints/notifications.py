@@ -10,7 +10,6 @@ router = APIRouter()
 def get_notifications():
     with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'schema', 'notifications.json')) as json_file:
         json_text = json.load(json_file)
-        print( json_text)
     return json_text
 
 @router.get("/notifications/unread", response_model=Notifications)

@@ -78,8 +78,8 @@ export default function CommonAreaChart() {
     <Box
       sx={{
         ml: 6,
-        height: "440px !important",
-        backgroundColor: "#FFFFFF00",
+        height: "550px !important",
+        backgroundColor: "#FFFFFF20",
         boxShadow:
           "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px",
         borderRadius: 4,
@@ -90,15 +90,16 @@ export default function CommonAreaChart() {
         <Typography variant="h4" fontSize="18px">
           Trends Chart
         </Typography>
+        <Typography variant="h4" fontSize="12px" sx={{ color: "gray" }}>
+          Product selling via categories.
+        </Typography>
         <ReactApexChart
           options={chartProps.options}
           series={chartProps.series}
           type="area"
-          height="98%"
+          height="90%"
         />
       </Stack>
     </Box>
   );
-  
 }
-

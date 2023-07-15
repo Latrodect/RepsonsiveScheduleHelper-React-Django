@@ -11,5 +11,8 @@
         "update-time":"Güncelleme Zamanı:",
         "button-accept": "Okundu",
         "button-decline": "Yoksay"
+    },
+    "settings":{
+        "title":"Ayarlar"
     }
 }

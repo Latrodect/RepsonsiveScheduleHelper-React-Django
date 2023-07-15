@@ -10,21 +10,19 @@ export default function DashboardPage() {
     <Stack
       direction="column"
       spacing={4}
-      sx={{ mt: 4, ml:6, height: "60%", width: "90%" }}
+      sx={{ mt: 4, ml: 6, height: "60%", width: "90%" }}
     >
       <Typography variant="h4" sx={{ mt: 10, fontSize: "25px" }}>
         {t("sidebar.dashboard")}
       </Typography>
 
-      <Grid container spacing={2} >
+      <Grid container spacing={2}>
         <Grid item xs={8}>
-        
-            <CommonAreaChart />
+          <CommonAreaChart />
         </Grid>
         <Grid item xs={3}>
           <CommonDonutChart />
         </Grid>
-        
       </Grid>
     </Stack>
   );

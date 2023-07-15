@@ -8,11 +8,12 @@ import {
   IconButton,
 } from "@mui/material";
 import ProfileImage from "../../../assets/images/profile.jpeg";
-import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import LangDropdown from "./LangDropdown";
 import NotificationDropdown from '../notifications/NotificationDropdown'
+import SettingsDrowdown from '../settings/SettingsDropdown'
+
 
 export default function TopBar({ open }) {
   return (
@@ -63,7 +64,7 @@ export default function TopBar({ open }) {
         >
           <LangDropdown />
           <IconButton color="inherit">
-            <SettingsIcon />
+            <SettingsDrowdown />
           </IconButton>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">

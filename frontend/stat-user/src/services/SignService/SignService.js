@@ -1,7 +1,7 @@
 import BASE_URL from "../../constants.js";
 import axios from "axios";
 
-const ENDPOINT = "waspsapi/signin/";
+const ENDPOINT = "api/v1/signin/";
 
 class SignService {
   SignInPostRequest(body) {

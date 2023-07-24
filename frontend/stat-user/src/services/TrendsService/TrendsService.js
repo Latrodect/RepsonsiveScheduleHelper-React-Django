@@ -1,7 +1,7 @@
 import BASE_URL from "../../constants.js";
 import axios from "axios";
 
-const ENDPOINT = "waspsapi/trends/";
+const ENDPOINT = "api/v1/trends/";
 
 class TrendsService {
     TrendsServiceGetRequest() {

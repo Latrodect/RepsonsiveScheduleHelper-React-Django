@@ -1,0 +1,56 @@
+[{
+    "type":"Garden",
+    "count": 31
+  },
+  {
+    "type":"Car",
+    "count": 40
+  },
+  {
+    "type":"Social",
+    "count": 28
+  },
+  {
+    "type":"Lifestyle",
+    "count": 51
+  },
+  {
+    "type":"Cloth",
+    "count": 42
+  },
+  {
+    "type":"Music",
+    "count": 48
+  },
+  {
+    "type":"Game",
+    "count": 56
+  },
+  {
+    "type":"Electronic",
+    "count": 54
+  },
+  {
+    "type":"Speakers",
+    "count": 66
+  },
+  {
+    "type":"Accessory",
+    "count": 72
+  },
+  {
+    "type":"Fabric",
+    "count": 64
+  },
+  {
+    "type":"Room",
+    "count": 69
+  },
+  {
+    "type":"Petshop",
+    "count": 72
+  },
+  {
+    "type":"Gross",
+    "count": 79
+  }]

@@ -1,5 +1,5 @@
 import BackgroundImage from "../../assets/images/wasp-background.png";
-import SignInService from "../../services/sign_service/SignService";
+import SignInService from "../../services/SignService/SignService";
 import AlertBox from "./SignInAlertBox";
 import Copyright from "./SignInCopyright";
 import LogoSegment from "./SignInFormBanner";

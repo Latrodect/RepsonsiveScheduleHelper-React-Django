@@ -6,18 +6,33 @@ import os
 
 router = APIRouter()
 
-@router.get("/notifications/all", response_model=List[Notifications])
-def get_notifications():
+@router.get("/notifications", response_model=List[Notifications])
+def get_notifications(status: str):
     with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'schema', 'notifications.json')) as json_file:
-        json_text = json.load(json_file)
-    return json_text
+            json_text = json.load(json_file)
+    if status == "all":
+        return json_text
+    elif status == "read":
+        response = []
+        for item in json_text:
+             if item["status"][0] == "Read":
+                  response.append(item)
+        return response
+    elif status == "unread":
+        response = []
+        for item in json_text:
+             if item["status"][0] == "Unreaded":
+                  response.append(item)
+        
+        return response
+    elif status == "archived":
+        response = []
+        for item in json_text:
+             if item["status"][0] == "Archived":
+                  response.append(item)
+        
+        return response
+    return []
 
-@router.get("/notifications/unread", response_model=Notifications)
-def get_notifications(read):
-    pass
-
-@router.get("/notifications/unread", response_model=Notifications)
-def get_archives():
-    pass
 
 

@@ -3,7 +3,11 @@
     "dashboard": "Dashboard",
     "categories": "Categories",
     "products": "Products",
-    "reports": "Reports",
+    "reports": {
+      "reports":"Reports",
+      "notifications":"Notifications",
+      "daily_plans": "Daily Plans"
+    },
     "plans": "Plans"
   },
   "notification": {

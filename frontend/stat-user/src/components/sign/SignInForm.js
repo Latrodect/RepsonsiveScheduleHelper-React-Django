@@ -1,4 +1,3 @@
-import BackgroundImage from "../../assets/images/wasp-background.png";
 import SignInService from "../../services/SignService/SignService";
 import AlertBox from "./SignInAlertBox";
 import Copyright from "./SignInCopyright";
@@ -51,7 +50,7 @@ export default function SignIn() {
         <CssBaseline />
         <Stack direction="row">
           <img
-            src={BackgroundImage}
+            src={"/images/wasp-background.png"}
             style={{
               width: "520px",
               position: "absolute",

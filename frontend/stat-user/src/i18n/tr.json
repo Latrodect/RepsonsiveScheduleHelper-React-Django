@@ -3,7 +3,11 @@
         "dashboard": "Gösterge Paneli",
         "categories": "Kategoriler",
         "products": "Ürünler",
-        "reports": "Raporlar",
+        "reports": {
+            "reports":"Raporlar",
+            "notifications":"Bildirimler",
+            "daily_plans": "Günlük Planlar"
+          },
         "plans": "Planlar"
     },
     "notification": {

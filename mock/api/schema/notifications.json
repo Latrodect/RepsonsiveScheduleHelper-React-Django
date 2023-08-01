@@ -1,30 +1,30 @@
 [{
   "id":1,
-  "src": "ProfileImage",
-  "title": "New Product Dispatch",
-  "content": "Your latest product selled too much. Buy again from Amazon.ca",
+  "src": "/images/profile.jpeg",
+  "title": "Nice to have",
+  "content": "Update premium account. Get more knowledge by following link.",
   "time": "1 day ago.",
-  "status": ["Read", "success"]
+  "status": ["Unread", "info"]
 },
 {
   "id":2,
-  "src": "ProfileImage",
-  "title": "New Product Dispatch",
-  "content": "Your latest product selled too much. Buy again from Amazon.ca",
-  "time": "1 day ago.",
+  "src": "/images/profile_two.png",
+  "title": "What is FBM",
+  "content": "Read that guide for learn waht is teh difference of FBA/FBM. Check description.",
+  "time": "5 day ago.",
   "status": ["Read", "success"]
 },
 {
   "id":3,
-  "src": "ProfileImage",
-  "title": "New Product Dispatch",
-  "content": "Your latest product selled too much. Buy again from Amazon.ca",
+  "src": "/images/profile_two.png",
+  "title": "Latest Updated of Amazon Policy",
+  "content": "Latest policies published. Please take a look.",
   "time": "1 day ago.",
   "status": ["Read", "success"]
 },
 {
   "id":4,
-  "src": "ProfileImage",
+  "src": "/images/profile_three.jpeg",
   "title": "New Product Dispatch",
   "content": "Your latest product selled too much. Buy again from Amazon.ca",
   "time": "1 day ago.",
@@ -32,9 +32,17 @@
 },
 {
   "id":5,
-  "src": "ProfileImage",
-  "title": "New Product Dispatch",
-  "content": "Your latest product selled too much. Buy again from Amazon.ca",
+  "src": "/images/profile.jpeg",
+  "title": "Supportive Tools",
+  "content": "Top class supportive tools exist and free. ",
   "time": "1 day ago.",
   "status": ["Read", "success"]
+},
+{
+  "id":6,
+  "src": "/images/profile.jpeg",
+  "title": "Maintenance Problem",
+  "content": "These product has some issue. User may don't want to buy. Please keep in mind.",
+  "time": "4 day ago.",
+  "status": ["Unreaded", "info"]
 }]

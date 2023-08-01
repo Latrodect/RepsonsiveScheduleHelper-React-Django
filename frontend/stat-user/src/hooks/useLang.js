@@ -1,15 +1,13 @@
 import { useTranslation } from "react-i18next";
-import UKFlag from "../assets/icons/uk.png";
-import TRFlag from "../assets/icons/tr.png";
 
 const LANGS = [
   {
     label: "en",
-    icon: UKFlag,
+    icon: "/icons/uk.png",
   },
   {
     label: "tr",
-    icon: TRFlag,
+    icon: "/icons/tr.png",
   },
 ];
 

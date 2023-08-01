@@ -11,65 +11,34 @@ import {
 } from "@mui/material";
 import NotificationIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
-import ProfileImage from "../../../assets/images/profile.jpeg";
-import ProfileImageTwo from "../../../assets/images/profile_two.png";
-import ProfileImageThree from "../../../assets/images/profile_three.jpeg";
-import useLang from "../../../hooks/useLang";
-import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
+  import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import NotificationHeader from "./NotificationHeader";
-import NotificationAllMessages from "./NotificationAllMessages";
+import NotificationMessages from "./NotificationMessages";
 import PropTypes from "prop-types";
+import NotificationsService from "../../../services/NotificationsService/NotificationsService";
 
-const notifications = [
-  {
-    src: ProfileImage,
-    title: "New Product Dispatch",
-    content: "Your latest product selled too much. Buy again from Amazon.ca",
-    time: "1 day ago.",
-    status: ["Read", "success"],
-  },
-  {
-    src: ProfileImageTwo,
-    title: "Leson Learnt",
-    content:
-      "Discover the secrets of successful product launches and expert go to market strategies. Master the art of product launches through with this step by step process.",
-    time: "5 day ago.",
-    status: ["Read", "success"],
-  },
-  {
-    src: ProfileImageTwo,
-    title: "Whether Message",
-    content:
-      "Whether you want to learn more about choosing a water treatment system, find out where you can get information about your tap water quality or discover what .",
-    time: "2 week ago.",
-    status: ["Read", "success"],
-  },
-  {
-    src: ProfileImageThree,
-    title: "Share Experience ",
-    content:
-      "Discover the secrets of successful product launches and expert go to market strategies. Master the art of product launches through with this step by step process.",
-    time: "5 day ago.",
-    status: ["Read", "success"],
-  },
-  {
-    src: ProfileImage,
-    title: "Amazon Privacy",
-    content:
-      "Whether you want to learn more about choosing a water treatment system, find out where you can get information about your tap water quality or discover what .",
-    time: "2 week ago.",
-    status: ["Read", "success"],
-  },
-];
+
 
 const ITEM_HEIGHT = 48;
+
+let allMessages = []
+let unreadedMessages = []
+let archveMessages = []
+
+
+NotificationsService.NotificationsGetRequest(`status=all`).then((response) =>  {allMessages = response.data})
+NotificationsService.NotificationsGetRequest(`status=unread`).then((response) =>  {unreadedMessages = response.data})
+
+
 
 export default function NotificationDropdown() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [value, setValue] = useState(0);
   const open = Boolean(anchorEl);
+
+  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -151,13 +120,13 @@ export default function NotificationDropdown() {
         <Divider/>
 
         <CustomTabPanel value={value} index={0}>
-          <NotificationAllMessages notifications={notifications} handleClose={handleClose}/>
+          <NotificationMessages notifications={allMessages} handleClose={handleClose}/>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          1
+        <NotificationMessages notifications={unreadedMessages} handleClose={handleClose}/>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          2
+        <NotificationMessages notifications={unreadedMessages} handleClose={handleClose}/>
         </CustomTabPanel>
 
         <Button sx={{ width: "100%", color: "#313131", fontSize: "12px" }}>
@@ -179,7 +148,6 @@ function CustomTabPanel(props) {
       role="tabpanel"
       hidden={value !== index}
       id={`notification-tabpanel-${index}`}
-      aria-laballedby={`notification-tab-${index}`}
       {...other}
     >
       {value === index && (children)}

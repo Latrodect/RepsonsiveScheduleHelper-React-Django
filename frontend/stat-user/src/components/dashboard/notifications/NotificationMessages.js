@@ -14,8 +14,7 @@ export default function NotificationAllMessages(props) {
   const { notifications, handleClose } = props;
   const { t } = useLang();
 
-  return (
-    notifications.map((item) => (
+  return notifications.map((item) => (
     <>
       <MenuItem
         key={item.title}
@@ -142,6 +141,5 @@ export default function NotificationAllMessages(props) {
       </MenuItem>
       <Divider sx={{ mt: 2, mr: 2, ml: 2 }} />
     </>
-  ))
-  )
+  ));
 }

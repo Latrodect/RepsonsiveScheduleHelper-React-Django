@@ -22,9 +22,8 @@ class Notifications(BaseModel):
                 status: list
             }
     """
-    id: int
     src: str
     title: str
     content: str
     time: str
-    status: list
+    status:list

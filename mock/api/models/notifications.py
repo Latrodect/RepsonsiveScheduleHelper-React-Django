@@ -4,7 +4,6 @@ class Notifications(BaseModel):
     """sumary_line
     
     Keyword arguments:
-    id: int
     name: str
     email: str
     src: str

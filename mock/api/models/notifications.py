@@ -4,7 +4,6 @@ class Notifications(BaseModel):
     """sumary_line
     
     Keyword arguments:
-    id: int
     name: str
     email: str
     src: str
@@ -14,7 +13,6 @@ class Notifications(BaseModel):
     status: list
 
     Return: {
-                id: int
                 src: str
                 title: str
                 content: str
@@ -22,9 +20,8 @@ class Notifications(BaseModel):
                 status: list
             }
     """
-    id: int
     src: str
     title: str
     content: str
     time: str
-    status: list
+    status:list

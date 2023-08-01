@@ -13,7 +13,6 @@ import {
 import MuiDrawer from "@mui/material/Drawer";
 import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
 import * as React from "react";
-import WaspLogo from "../../../assets/images/wasp.png";
 import Copyright from "../../sign/SignInCopyright";
 import StaticMenu from "./StaticMenuList";
 import TopBar from "../topbar/TopBar";
@@ -77,7 +76,7 @@ export default function SideBar({ children }) {
                 spacing={2}
                 sx={{ ...(!open && { display: "none" }) }}
               >
-                <img src={WaspLogo} alt="Logo" style={{ width: "40px" }} />
+                <img src={"/images/wasp.png"} alt="Logo" style={{ width: "40px" }} />
                 <Typography>WASP</Typography>
               </Stack>
               <ChevronLeftIcon
@@ -98,7 +97,7 @@ export default function SideBar({ children }) {
                 ...(open && { display: "none" }),
               }}
             >
-              <img src={WaspLogo} alt="Logo" style={{ width: "40px" }} />
+              <img src={"/images/wasp.png"} alt="Logo" style={{ width: "40px" }} />
               <ChevronRightIcon
                 onClick={() => setOpen(!open)}
                 sx={{

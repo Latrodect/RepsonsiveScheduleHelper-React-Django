@@ -7,7 +7,6 @@ import {
   Toolbar,
   IconButton,
 } from "@mui/material";
-import ProfileImage from "../../../assets/images/profile.jpeg";
 import SearchIcon from "@mui/icons-material/Search";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import LangDropdown from "./LangDropdown";
@@ -71,7 +70,7 @@ export default function TopBar({ open }) {
               <NotificationDropdown/>
             </Badge>
           </IconButton>
-          <Avatar alt="profile" src={ProfileImage} />
+          <Avatar alt="profile" src={"/images/profile.jpeg"} />
         </Stack>
       </Toolbar>
     </Box>

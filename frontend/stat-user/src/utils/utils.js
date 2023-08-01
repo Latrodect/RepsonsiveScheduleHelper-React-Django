@@ -8,6 +8,7 @@ import CategoriesPage from "../pages/categories/Categories";
 import ReportsPage from "../pages/reports/Reports";
 import ProductsPage from "../pages/products/Products";
 import PlansPage from "../pages/plans/Plans";
+import Notificaitons from "../pages/notifications/Notifications";
 
 export const PrimaryMenuItems = [
   {
@@ -29,10 +30,19 @@ export const PrimaryMenuItems = [
     path: "/products",
   },
   {
-    title: "sidebar.reports",
+    title: "sidebar.reports.reports",
     icon: <BarChartIcon />,
-    component: <ReportsPage />,
     path: "/reports",
+    children: [{
+      title: "sidebar.reports.notifications",
+      component: <Notificaitons />,
+      path: "/notifications",
+    },
+    {
+      title: "sidebar.reports.daily_plans",
+      component: <Notificaitons />,
+      path: "/daily-plans",
+    }],
   },
   {
     title: "sidebar.plans",

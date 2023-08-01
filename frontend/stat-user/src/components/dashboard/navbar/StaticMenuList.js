@@ -3,22 +3,31 @@ import {
   ListItemIcon,
   ListItemText,
   Badge,
+  List,
+  Collapse,
+  Stack,
 } from "@mui/material";
 import * as React from "react";
 import { PrimaryMenuItems } from "../../../utils/utils";
 import useLang from "../../../hooks/useLang";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 export default function StaticMenu(open) {
   const { t, currentLang, changeLang } = useLang();
   const navigate = useNavigate();
-  const [active, setActive] = useState("dashboard");
+  const [active, setActive] = useState("sidebar.dashboard");
+  const [nestedOpen, setNestedOpen] = React.useState(false);
+
+  const handleNestedClick = () => {
+    setNestedOpen((prevOpen) => !prevOpen);
+  };
 
   return (
-    <>
-      {PrimaryMenuItems.map((item) => {
-        return (
+    <div>
+      {PrimaryMenuItems.map((item) => (
+        <Stack direction="column">
           <ListItemButton
             sx={{
               height: "55px",
@@ -32,8 +41,12 @@ export default function StaticMenu(open) {
                 : {}),
             }}
             onClick={() => {
-              setActive(item.title);
-              navigate(item.path);
+              if (item.children) {
+                handleNestedClick();
+              } else {
+                setActive(item.title);
+                navigate(item.path);
+              }
             }}
           >
             <ListItemIcon
@@ -75,8 +88,54 @@ export default function StaticMenu(open) {
               />
             )}
           </ListItemButton>
-        );
-      })}
-    </>
+
+          {item.children &&
+            item.children.map((childItem) => (
+              <Collapse in={nestedOpen} timeout="auto">
+                <List component="div" disablePadding unmountOnExit>
+                  <ListItemButton
+                    sx={{
+                      height: "55px",
+                      width: "90%",
+                      textAlign: "left",
+                      ml: 2,
+                      borderRadius: "10px",
+                      paddingRight: 5,
+                      ...(active === childItem.title
+                        ? { backgroundColor: "rgba(173, 53, 212, 0.18)" }
+                        : {}),
+                    }}
+                    onClick={() => {
+                      setActive(childItem.title);
+                      navigate(childItem.path);
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        color: "#313131 ",
+                      }}
+                    >
+                      <NavigateNextIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={t(childItem.title)}
+                      primaryTypographyProps={{
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        display: "block",
+                        color: "rgb(99,115,129)",
+                        fontSize: "Public Sans', sans-serif",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                      }}
+                    />
+                  </ListItemButton>
+                </List>
+              </Collapse>
+            ))}
+        </Stack>
+      ))}
+    </div>
   );
 }

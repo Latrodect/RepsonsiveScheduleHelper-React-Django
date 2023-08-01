@@ -21,6 +21,7 @@ export default function Route() {
         { path: PATHS.reports, element: <Reports /> },
         { path: PATHS.plans, element: <Plans /> },
         { path: PATHS.products, element: <Products /> },
+        { path: PATHS.notications, element: <Notifications /> },
       ],
     },
   ]);
@@ -32,3 +33,4 @@ const Categories = Loader(lazy(() => import("../pages/categories/Categories")));
 const Reports = Loader(lazy(() => import("../pages/reports/Reports")));
 const Plans = Loader(lazy(() => import("../pages/plans/Plans")));
 const Products = Loader(lazy(() => import("../pages/products/Products")));
+const Notifications = Loader(lazy(() => import("../pages/notifications/Notifications")));

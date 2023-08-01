@@ -19,6 +19,7 @@ import NotificationHeader from "./NotificationHeader";
 import NotificationMessages from "./NotificationMessages";
 import PropTypes from "prop-types";
 import NotificationsService from "../../../services/NotificationsService/NotificationsService";
+import { useNavigate } from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
 
@@ -41,6 +42,7 @@ export default function NotificationDropdown() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [value, setValue] = useState(0);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -138,7 +140,7 @@ export default function NotificationDropdown() {
             />
           </CustomTabPanel>
 
-          <Button sx={{ width: "100%", color: "#313131", fontSize: "12px" }}>
+          <Button sx={{ width: "100%", color: "#313131", fontSize: "12px" }} onClick={()=>(navigate("/notifications"))}>
             See More...
           </Button>
           <Typography sx={{ textAlign: "center", fontSize: "10px" }}>

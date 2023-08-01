@@ -14,7 +14,6 @@ class Notifications(BaseModel):
     status: list
 
     Return: {
-                id: int
                 src: str
                 title: str
                 content: str

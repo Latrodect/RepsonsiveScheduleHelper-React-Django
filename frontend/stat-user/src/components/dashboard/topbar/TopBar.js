@@ -2,7 +2,6 @@ import {
   Avatar,
   Stack,
   Typography,
-  Badge,
   Box,
   Toolbar,
   IconButton,
@@ -10,9 +9,8 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import LangDropdown from "./LangDropdown";
-import NotificationDropdown from '../notifications/NotificationDropdown'
-import SettingsDrowdown from '../settings/SettingsDropdown'
-
+import NotificationDropdown from "../notifications/NotificationDropdown";
+import SettingsDrowdown from "../settings/SettingsDropdown";
 
 export default function TopBar({ open }) {
   return (
@@ -66,9 +64,7 @@ export default function TopBar({ open }) {
             <SettingsDrowdown />
           </IconButton>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationDropdown/>
-            </Badge>
+            <NotificationDropdown />
           </IconButton>
           <Avatar alt="profile" src={"/images/profile.jpeg"} />
         </Stack>

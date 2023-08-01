@@ -49,7 +49,7 @@ const defaultTheme = createTheme();
 
 export default function SideBar({ children }) {
   const [open, setOpen] = React.useState(true);
-
+  
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: "flex" }}>
@@ -76,7 +76,11 @@ export default function SideBar({ children }) {
                 spacing={2}
                 sx={{ ...(!open && { display: "none" }) }}
               >
-                <img src={"/images/wasp.png"} alt="Logo" style={{ width: "40px" }} />
+                <img
+                  src={"/images/wasp.png"}
+                  alt="Logo"
+                  style={{ width: "40px" }}
+                />
                 <Typography>WASP</Typography>
               </Stack>
               <ChevronLeftIcon
@@ -97,7 +101,11 @@ export default function SideBar({ children }) {
                 ...(open && { display: "none" }),
               }}
             >
-              <img src={"/images/wasp.png"} alt="Logo" style={{ width: "40px" }} />
+              <img
+                src={"/images/wasp.png"}
+                alt="Logo"
+                style={{ width: "40px" }}
+              />
               <ChevronRightIcon
                 onClick={() => setOpen(!open)}
                 sx={{
@@ -120,7 +128,9 @@ export default function SideBar({ children }) {
             <StaticMenu open={open} />
           </List>
 
-          <div style={{ marginBottom: "5px", ...(!open && { display: "none" }), }}>
+          <div
+            style={{ marginBottom: "5px", ...(!open && { display: "none" }) }}
+          >
             <Copyright />
           </div>
         </Drawer>

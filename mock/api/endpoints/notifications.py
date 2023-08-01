@@ -12,10 +12,23 @@ def get_notifications(status: str):
             json_text = json.load(json_file)
     if status == "all":
         return json_text
+    elif status == "read":
+        response = []
+        for item in json_text:
+             if item["status"][0] == "Read":
+                  response.append(item)
+        return response
     elif status == "unread":
         response = []
         for item in json_text:
              if item["status"][0] == "Unreaded":
+                  response.append(item)
+        
+        return response
+    elif status == "archived":
+        response = []
+        for item in json_text:
+             if item["status"][0] == "Archived":
                   response.append(item)
         
         return response

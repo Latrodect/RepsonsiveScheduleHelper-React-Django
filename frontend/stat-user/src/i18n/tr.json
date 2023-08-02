@@ -1,22 +1,43 @@
 {
-    "sidebar": {
-        "dashboard": "Gösterge Paneli",
-        "categories": "Kategoriler",
-        "products": "Ürünler",
-        "reports": {
-            "reports":"Raporlar",
-            "notifications":"Bildirimler",
-            "daily_plans": "Günlük Planlar"
-          },
-        "plans": "Planlar"
+  "sidebar": {
+    "dashboard": "Gösterge Paneli",
+    "categories": "Kategoriler",
+    "products": "Ürünler",
+    "description": "Wasp Göstege Paneli",
+    "reports": {
+      "reports": "Raporlar",
+      "notifications": "Bildirimler",
+      "daily_plans": "Günlük Planlar"
     },
-    "notification": {
-        "title":"Son Mesajlar",
-        "update-time":"Güncelleme Zamanı:",
-        "button-accept": "Okundu",
-        "button-decline": "Yoksay"
+    "plans": "Planlar"
+  },
+  "notification": {
+    "title": "Son Mesajlar",
+    "update-time": "Güncelleme Zamanı:",
+    "button-accept": "Okundu",
+    "button-decline": "Yoksay",
+    "empty-message-button": "Gösterge Paneli",
+    "empty-message-title": "Mesaj kutusu boş.",
+    "empty-message-content": "Şu anda hiç bildiriminiz yok. Yeni bir şey geldiğinde size haber vereceğiz.",
+    "page-title": "Bildirimler",
+    "page-description": "Araç çubuğunu kullanarak bildirimlerinizi yönetin.",
+    "tab": {
+      "all": "Tüm Bildirimler",
+      "unread": "Okunmamış Bildirimler",
+      "read": "Okunmuş Bildirimler",
+      "archive": "Arşivlenmiş Bildirimler"
     },
-    "settings":{
-        "title":"Ayarlar"
+    "dropdown": {
+      "tab": {
+        "all": "Tümü",
+        "unread": "Okunmamış",
+        "archive": "Arşivlenmiş"
+      },
+      "page-button-link": "Daha fazla gör...",
+      "page-button-description": "Bildirimler sayfasından mesajlarınızı kontrol etmek için tıklayın."
     }
+  },
+  "settings": {
+    "title": "Ayarlar"
+  }
 }

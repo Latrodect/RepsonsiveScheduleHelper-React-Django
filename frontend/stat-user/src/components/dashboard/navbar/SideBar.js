@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import {
@@ -48,6 +49,7 @@ const Drawer = styled(MuiDrawer, {
 const defaultTheme = createTheme();
 
 export default function SideBar({ children }) {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(true);
   
   return (
@@ -123,7 +125,7 @@ export default function SideBar({ children }) {
                 ...(!open && { display: "none" }),
               }}
             >
-              Wasp Dashboard
+              {t("sidebar.description")}
             </ListSubheader>
             <StaticMenu open={open} />
           </List>

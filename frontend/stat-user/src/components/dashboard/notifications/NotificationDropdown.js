@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 import {
   Menu,
   IconButton,
@@ -39,6 +40,7 @@ NotificationsService.NotificationsGetRequest(`status=unread`).then(
 );
 
 export default function NotificationDropdown() {
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
   const [value, setValue] = useState(0);
   const open = Boolean(anchorEl);
@@ -102,19 +104,19 @@ export default function NotificationDropdown() {
               <Tab
                 icon={<NotificationsActiveIcon />}
                 iconPosition="end"
-                label="All"
+                label={t("notification.dropdown.tab.all")}
                 {...allyProps(0)}
               />
               <Tab
                 icon={<MarkAsUnreadIcon />}
                 iconPosition="end"
-                label="Unread"
+                label={t("notification.dropdown.tab.unread")}
                 {...allyProps(1)}
               />
               <Tab
                 icon={<ArchiveIcon />}
                 iconPosition="end"
-                label="Archive"
+                label={t("notification.dropdown.tab.archive")}
                 {...allyProps(2)}
               />
             </Tabs>
@@ -141,10 +143,10 @@ export default function NotificationDropdown() {
           </CustomTabPanel>
 
           <Button sx={{ width: "100%", color: "#313131", fontSize: "12px" }} onClick={()=>(navigate("/notifications"))}>
-            See More...
+          {t("notification.dropdown.page-button-link")}
           </Button>
           <Typography sx={{ textAlign: "center", fontSize: "10px" }}>
-            Check your messages.
+          {t("notification.dropdown.page-button-description")}
           </Typography>
         </Menu>
       </div>

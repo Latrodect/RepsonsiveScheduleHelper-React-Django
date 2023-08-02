@@ -3,9 +3,10 @@
     "dashboard": "Dashboard",
     "categories": "Categories",
     "products": "Products",
+    "description": "Wasp Dashboard",
     "reports": {
-      "reports":"Reports",
-      "notifications":"Notifications",
+      "reports": "Reports",
+      "notifications": "Notifications",
       "daily_plans": "Daily Plans"
     },
     "plans": "Plans"
@@ -14,7 +15,27 @@
     "title": "Notifications",
     "update-time": "Update Time:",
     "button-accept": "Read",
-    "button-decline": "Decline"
+    "button-decline": "Decline",
+    "empty-message-button": "Dashboard",
+    "empty-message-title": "Your message box is empty.",
+    "empty-message-content": "You have currently no notifications. We will notify you when something new arrived.",
+    "page-title": "Notifications",
+    "page-description": "Manage your notifications with using toolbar.",
+    "tab": {
+      "all": "All Notifications",
+      "unread": "Unreaded Notifications",
+      "read": "Read Notifications",
+      "archive": "Archived Notifications"
+    },
+    "dropdown": {
+      "tab": {
+        "all": "All",
+        "unread": "Unread",
+        "archive": "Archive"
+      },
+      "page-button-link": "See More...",
+      "page-button-description": "Click to check your messages from the Notifications page."
+    }
   },
   "settings": {
     "title": "Settings"

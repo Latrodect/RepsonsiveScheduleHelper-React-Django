@@ -10,6 +10,7 @@ import {
   Button,
   Divider,
   IconButton,
+  CircularProgress,
   Badge,
 } from "@mui/material";
 import NotificationsService from "../../services/NotificationsService/NotificationsService";
@@ -18,6 +19,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 import { useState } from "react";
+import NoData from "../../components/common/NoData";
 
 let notifications;
 let readedNotifications;
@@ -50,27 +52,91 @@ NotificationsService.NotificationsGetRequest(`status=archive`).then(
   }
 );
 
+function Spinner() {
+  return (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      sx={{ height: "80%" }}
+    >
+      <CircularProgress sx={{ color: "rgb(33, 43, 54)" }} />
+    </Box>
+  );
+}
+
 export default function NotificationsPage() {
   const { t } = useTranslation();
   const [data, setData] = useState(notifications);
   const [active, setActive] = useState("all");
+  const [visibility, setVisibility] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [messageContent, setMessageContent] = useState("notification.tab.all")
 
   const handleAllMessageClicked = () => {
+    setIsLoading(true);
     const newData = [...notifications];
-    setData(newData); //
+    setData(newData);
+    setMessageContent("notification.tab.all")
+
+    if (notificationsCount === 0) {
+      setVisibility(true);
+    } else {
+      setVisibility(false);
+    }
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
 
   const handleUnreadMessageClicked = () => {
+    setIsLoading(true);
     const newData = [...unreadedNotifications];
-    setData(newData); //
+    setData(newData);
+    setMessageContent("notification.tab.unread")
+
+    if (unreadedNotificationsCount === 0) {
+      setVisibility(true);
+    } else {
+      setVisibility(false);
+    }
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
   const handleReadMessageClicked = () => {
+    setIsLoading(true);
     const newData = [...readedNotifications];
-    setData(newData); //
+    setData(newData);
+    setMessageContent("notification.tab.read")
+
+    if (readedNotificationsCount === 0) {
+      setVisibility(true);
+    } else {
+      setVisibility(false);
+    }
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
   const handleArchivedMessageClicked = () => {
+    setIsLoading(true);
     const newData = [...archivedNotifications];
-    setData(newData); //
+    setData(newData);
+    setMessageContent("notification.tab.archive")
+
+    if (archivedNotificationsCount === 0) {
+      setVisibility(true);
+    } else {
+      setVisibility(false);
+    }
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
   return (
     <Stack
@@ -101,7 +167,7 @@ export default function NotificationsPage() {
               ml: 3,
             }}
           >
-            <Typography variant="h4">Notifications</Typography>
+            <Typography variant="h4"> {t("notification.page-title")}</Typography>
             <Typography
               sx={{
                 fontSize: "14px",
@@ -109,7 +175,7 @@ export default function NotificationsPage() {
                 color: "#313131",
               }}
             >
-              Manage your notifications with using toolbar.
+              {t("notification.page-description")}
             </Typography>
           </Stack>
           <Stack direction="column" spacing={2} sx={{ textAlign: "right" }}>
@@ -120,7 +186,8 @@ export default function NotificationsPage() {
                 color: "#313131",
               }}
             >
-              All Messages
+               {t(messageContent)}
+              
             </Typography>
             <Stack direction="row" spacing={2} sx={{ mt: 6 }}>
               <Badge badgeContent={notificationsCount} color="primary">
@@ -185,144 +252,160 @@ export default function NotificationsPage() {
             </Stack>
           </Stack>
         </Stack>
-        {data.map((item) => (
-          <>
-            <MenuItem
-              key={item.title}
-              selected={item === "Pyxis"}
-              sx={{
-                height: "150px",
-              }}
-            >
-              <Stack direction="row" sx={{ width: "100% !important" }}>
-                <Avatar alt="Notification" src={item.src} />
-                <Stack
-                  direction="column"
-                  sx={{ ml: 2, width: "100% !important" }}
-                >
+        {isLoading ? (
+          <Spinner />
+        ) : !visibility ? (
+          data.map((item) => (
+            <>
+              <MenuItem
+                key={item.title}
+                selected={item === "Pyxis"}
+                sx={{
+                  height: "150px",
+                }}
+              >
+                <Stack direction="row" sx={{ width: "100% !important" }}>
+                  <Avatar alt="Notification" src={item.src} />
                   <Stack
-                    direction="row"
-                    sx={{ justifyContent: "space-between" }}
+                    direction="column"
+                    sx={{ ml: 2, width: "100% !important" }}
                   >
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontSize: "16px",
-                        fontWeight: "600",
-                        color: "#313131",
-                      }}
+                    <Stack
+                      direction="row"
+                      sx={{ justifyContent: "space-between" }}
                     >
-                      {item.title}
-                    </Typography>
-                    {
-                      <Alert
-                        severity={item.status[1]}
-                        sx={{ cursor: "pointer" }}
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "600",
+                          color: "#313131",
+                        }}
                       >
-                        {item.status[0]}
-                      </Alert>
-                    }
-                  </Stack>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      fontSize: "11px",
-                      color: "gray",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {t("notification.update-time")} {item.time}
-                  </Typography>
-                  <Tooltip title={item.content}>
+                        {item.title}
+                      </Typography>
+                      {
+                        <Alert
+                          severity={item.status[1]}
+                          sx={{ cursor: "pointer" }}
+                        >
+                          {item.status[0]}
+                        </Alert>
+                      }
+                    </Stack>
                     <Typography
                       variant="body1"
                       sx={{
-                        fontSize: "13px",
-                        color: "#333333",
+                        fontSize: "11px",
+                        color: "gray",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {item.content}
+                      {t("notification.update-time")} {item.time}
                     </Typography>
-                  </Tooltip>
-                  <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        position: "relative",
-                        boxSizing: "border-box",
-                        outline: "0px",
-                        margin: "0px",
-                        cursor: "pointer",
-                        verticalAlign: "middle",
-                        appearance: "none",
-                        textDecoration: "none",
-                        fontWeight: "700",
-                        lineHeight: "1.71429",
-                        textTransform: "unset",
-                        fontFamily: "'Public Sans', sans-serif",
-                        minWidth: "64px",
-                        padding: "4px 8px",
-                        borderRadius: "8px",
-                        transition:
-                          "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-                        boxShadow: "none",
-                        color: "rgb(255, 255, 255)",
-                        backgroundColor: "rgb(33, 43, 54)",
-                        height: "30px",
-                        fontSize: "13px",
-                      }}
-                    >
-                      {t("notification.button-accept")}
-                    </Button>
-                    <Button
-                      variant="outline"
-                      sx={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        position: "relative",
-                        boxSizing: "border-box",
-                        outline: "0px",
-                        border: "0px currentcolor",
-                        margin: "0px",
-                        cursor: "pointer",
-                        verticalAlign: "middle",
-                        appearance: "none",
-                        textDecoration: "none",
-                        fontWeight: "700",
-                        lineHeight: "1.71429",
-                        textTransform: "unset",
-                        fontFamily: "'Public Sans', sans-serif",
-                        minWidth: "64px",
-                        padding: "4px 8px",
-                        borderRadius: "8px",
-                        transition:
-                          "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-                        border: "1px solid rgba(145, 158, 171, 0.32)",
-                        boxShadow: "none",
-                        color: "rgb(33, 43, 54)",
-                        backgroundColor: "transparent",
-                        height: "30px",
-                        fontSize: "13px",
-                      }}
-                    >
-                      {t("notification.button-decline")}
-                    </Button>
+                    <Tooltip title={item.content}>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontSize: "13px",
+                          color: "#333333",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {item.content}
+                      </Typography>
+                    </Tooltip>
+                    <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          position: "relative",
+                          boxSizing: "border-box",
+                          outline: "0px",
+                          margin: "0px",
+                          cursor: "pointer",
+                          verticalAlign: "middle",
+                          appearance: "none",
+                          textDecoration: "none",
+                          fontWeight: "700",
+                          lineHeight: "1.71429",
+                          textTransform: "unset",
+                          fontFamily: "'Public Sans', sans-serif",
+                          minWidth: "64px",
+                          padding: "4px 8px",
+                          borderRadius: "8px",
+                          transition:
+                            "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+                          boxShadow: "none",
+                          color: "rgb(255, 255, 255)",
+                          backgroundColor: "rgb(33, 43, 54)",
+                          height: "30px",
+                          fontSize: "13px",
+                          "&:hover": {
+                            transform: "scale(1.05)",
+                            color: "rgb(33, 43, 54)",
+                            backgroundColor: "white",
+                          },
+                        }}
+                      >
+                        {t("notification.button-accept")}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        sx={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          position: "relative",
+                          boxSizing: "border-box",
+                          outline: "0px",
+                          border: "0px currentcolor",
+                          margin: "0px",
+                          cursor: "pointer",
+                          verticalAlign: "middle",
+                          appearance: "none",
+                          textDecoration: "none",
+                          fontWeight: "700",
+                          lineHeight: "1.71429",
+                          textTransform: "unset",
+                          fontFamily: "'Public Sans', sans-serif",
+                          minWidth: "64px",
+                          padding: "4px 8px",
+                          borderRadius: "8px",
+                          transition:
+                            "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+                          border: "1px solid rgba(145, 158, 171, 0.32)",
+                          boxShadow: "none",
+                          color: "rgb(33, 43, 54)",
+                          backgroundColor: "transparent",
+                          height: "30px",
+                          fontSize: "13px",
+                          "&:hover": {
+                            transform: "scale(1.05)",
+                            color: "white",
+                            backgroundColor: "rgb(33, 43, 54)",
+                          },
+                        }}
+                      >
+                        {t("notification.button-decline")}
+                      </Button>
+                    </Stack>
                   </Stack>
                 </Stack>
-              </Stack>
-            </MenuItem>
-            <Divider sx={{ mt: 2, mr: 2, ml: 2 }} />
-          </>
-        ))}
+              </MenuItem>
+              <Divider sx={{ mt: 2, mr: 2, ml: 2 }} />
+            </>
+          ))
+        ) : (
+          <NoData />
+        )}
       </Box>
     </Stack>
   );

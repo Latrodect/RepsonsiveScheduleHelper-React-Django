@@ -146,7 +146,7 @@ export default function NotificationsPage() {
     >
       <Box
         sx={{
-          height: "800px",
+          height: "1000px",
           width: "90%",
           ml: 4,
           backgroundColor: "#FFFFFF70",
@@ -157,7 +157,7 @@ export default function NotificationsPage() {
           paddingLeft: 2,
           paddingRight: 2,
           overflow: "auto",
-          maxHeight: "800px",
+          maxHeight: "1000px",
         }}
       >
         <Stack direction="row" justifyContent="space-between">
@@ -252,6 +252,7 @@ export default function NotificationsPage() {
             </Stack>
           </Stack>
         </Stack>
+        <br/>
         {isLoading ? (
           <Spinner />
         ) : !visibility ? (

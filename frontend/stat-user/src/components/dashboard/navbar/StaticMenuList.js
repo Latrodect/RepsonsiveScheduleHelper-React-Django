@@ -13,6 +13,8 @@ import useLang from "../../../hooks/useLang";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 export default function StaticMenu(open) {
   const { t, currentLang, changeLang } = useLang();
@@ -72,6 +74,43 @@ export default function StaticMenu(open) {
                   }}
                 />
               </Badge>
+            ) : item.children ? (
+              <>
+                <ListItemText
+                  primary={t(item.title)}
+                  primaryTypographyProps={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    display: "block",
+                    color: "rgb(99,115,129)",
+                    fontSize: "Public Sans', sans-serif",
+                    fontWeight: "600",
+                    textTransform: "capitalize",
+                  }}
+                />
+                {!nestedOpen ? (
+                  <ListItemIcon
+                    sx={{
+                      color: "#313131 ",
+                      textAlign: "right",
+                      justifyContent: "right",
+                    }}
+                  >
+                    <ExpandMoreIcon />
+                  </ListItemIcon>
+                ) : (
+                  <ListItemIcon
+                    sx={{
+                      color: "#313131 ",
+                      textAlign: "right",
+                      justifyContent: "right",
+                    }}
+                  >
+                    <ExpandLessIcon />
+                  </ListItemIcon>
+                )}
+              </>
             ) : (
               <ListItemText
                 primary={t(item.title)}

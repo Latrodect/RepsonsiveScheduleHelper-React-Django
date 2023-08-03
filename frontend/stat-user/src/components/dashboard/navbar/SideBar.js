@@ -10,6 +10,7 @@ import {
   List,
   Box,
   Toolbar,
+  Avatar,
 } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
@@ -51,7 +52,7 @@ const defaultTheme = createTheme();
 export default function SideBar({ children }) {
   const { t } = useTranslation();
   const [open, setOpen] = React.useState(true);
-  
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: "flex" }}>
@@ -83,7 +84,6 @@ export default function SideBar({ children }) {
                   alt="Logo"
                   style={{ width: "40px" }}
                 />
-                <Typography>WASP</Typography>
               </Stack>
               <ChevronLeftIcon
                 onClick={() => setOpen(!open)}
@@ -118,10 +118,29 @@ export default function SideBar({ children }) {
               />
             </IconButton>
           </Toolbar>
+          <Stack
+            direction="column"
+            spacing={2}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Avatar
+              alt="profile"
+              sx={{ height: "100px", width: "100px", ...(!open && { display: "none" }), }}
+              src={"/images/profile.jpeg"}
+            />
+            <Stack direction="column" spacing={0} justifyContent="center" alignItems="center">
+              <Typography sx={{color: "rgb(33, 43, 54)", fontWeight:600, fontSize:"16px", ...(!open && { display: "none" }),}}>Bahadir Nural</Typography>
+              <Typography sx={{ color:"gray", fontWeight:600, fontSize:"13px", ...(!open && { display: "none" }),}}>bahadir.nural@outlook.com</Typography>
+            </Stack>
+          </Stack>
           <List component="nav" sx={{ height: "91vh" }}>
             <ListSubheader
               sx={{
-                textAlign: "right",
+                textAlign: "left",
+                color: "rgb(33, 43, 54)",
+                fontWeight:600,
+                mt:6,
                 ...(!open && { display: "none" }),
               }}
             >

@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import { useRoutes } from "react-router-dom";
-import Loader from "../components/common/Loader";
+import Loader from "../components/common/EnhancedLoader";
 import AppLayout from "../components/layouts/AppLayout";
 import TokenValidationExp from "../components/token/TokenValidation";
 import { PATHS } from "./paths";

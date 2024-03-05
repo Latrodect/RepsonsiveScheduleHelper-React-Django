@@ -1,9 +1,9 @@
 // Common table will generated for data table.
 
-import * as React from "react";
+import { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { alpha } from "@mui/material/styles";
-import  FilterListIcon  from "@mui/icons-material/FilterList";
+import FilterListIcon from "@mui/icons-material/FilterList";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { visuallyHidden } from "@mui/utils";
 import {
@@ -43,7 +43,7 @@ function getComparator(order, orderBy) {
 }
 
 function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
+  const stabilizedThis = array?.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) {
@@ -189,12 +189,13 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function EnhancedTable(props) {
-  const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [order, setOrder] = useState("asc");
+  const [orderBy, setOrderBy] = useState("");
+  const [selected, setSelected] = useState([]);
+  const [page, setPage] = useState(0);
+  const [dense, setDense] = useState(false);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
   const {
     isOnclickActive,
     paginationIsActive,
@@ -202,7 +203,6 @@ export default function EnhancedTable(props) {
     source,
     toolbarTitle,
     squeeze,
-    slot,
   } = props;
 
   const handleRequestSort = (event, property) => {
@@ -265,7 +265,7 @@ export default function EnhancedTable(props) {
     }
     return sort;
   }
-  const visibleRows = React.useMemo(
+  const visibleRows = useMemo(
     () => checkPaginationAndSort(),
     [order, orderBy, page, rowsPerPage, checkPaginationAndSort]
   );
@@ -330,26 +330,15 @@ export default function EnhancedTable(props) {
                         />
                       )}
                     </TableCell>
-                    {data.map((cell, innerIndex) =>
-                      columnSchema[innerIndex].hasSlot === true ? (
-                        <TableCell
-                          key={innerIndex}
-                          align={columnSchema[index]?.align}
-                        >
-                          <Stack direction="row">
-                            {slot}
-                            <Typography sx={{ ml: 3 }}>{cell}</Typography>
-                          </Stack>
-                        </TableCell>
-                      ) : (
-                        <TableCell
-                          key={innerIndex}
-                          align={columnSchema[index]?.align}
-                        >
-                          {cell}
-                        </TableCell>
-                      )
-                    )}
+                    {columnSchema.map((column, innerIndex) => (
+                      <TableCell key={innerIndex} align={column.align}>
+                        {column.hasSlot === true ? (
+                          <>{column.slot(row, column)}</>
+                        ) : (
+                          <>{row[column.id]}</>
+                        )}
+                      </TableCell>
+                    ))}
                   </TableRow>
                 );
               })}
@@ -378,6 +367,7 @@ export default function EnhancedTable(props) {
         )}
         {squeeze === true && (
           <FormControlLabel
+            sx={{ ml: 3 }}
             control={<Switch checked={dense} onChange={handleChangeDense} />}
             label="Dense padding"
           />

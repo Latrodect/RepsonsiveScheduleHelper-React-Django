@@ -1,8 +1,8 @@
 import { Typography, Stack, Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import CommonAreaChart from "../../components/common/CommonAreaChart";
-import CommonDonutChart from "../../components/common/CommonDonutChart";
-import CommonCard from "../../components/common/CommonCard";
+import CommonAreaChart from "../../components/common/EnhancedAreaChart";
+import CommonDonutChart from "../../components/common/EnhancedDonutChart";
+import CommonCard from "../../components/common/EnhancedCard";
 
 export default function DashboardPage() {
   const { t } = useTranslation();

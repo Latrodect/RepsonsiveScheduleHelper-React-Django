@@ -81,6 +81,7 @@ export default function NotificationDropdown() {
             style: {
               maxHeight: ITEM_HEIGHT * 42.5,
               width: "425px",
+              height:"800px"
             },
           }}
         >

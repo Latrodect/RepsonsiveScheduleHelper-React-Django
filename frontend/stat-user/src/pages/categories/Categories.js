@@ -1,5 +1,5 @@
-import { Avatar } from "@mui/material";
-import EnhancedTable from "../../components/common/CommonTable";
+import { Avatar, Chip } from "@mui/material";
+import EnhancedTable from "../../components/common/EnhancedTable";
 import Box from "@mui/material/Box";
 
 const headCells = [
@@ -10,6 +10,16 @@ const headCells = [
     label: "Dessert (100g serving)",
     align: "left",
     hasSlot: true,
+      slot: (rowData, column) => (
+        <div>
+            <Chip
+              sx={{ mr: 1, color: "#00FF26" }}
+              key={rowData.name}
+              label={rowData.name}
+              variant="outlined"
+            />
+        </div>
+      ),
   },
   {
     id: "calories",
@@ -40,14 +50,6 @@ const headCells = [
     numeric: true,
     disablePadding: false,
     label: "Protein (g)",
-    align: "left",
-  },
-  {
-    id: "as",
-    numeric: true,
-    disablePadding: false,
-    label: "Fat (g)",
-    sorIsActive: true,
     align: "left",
   },
 ];
@@ -97,7 +99,6 @@ export default function CategoriesPage() {
         squeeze={true}
         toolbarTitle={"First Common Table"}
         hasSlot={false}
-        slot={<Avatar></Avatar>}
       ></EnhancedTable>
     </Box>
   );

@@ -142,7 +142,7 @@ export default function NotificationsPage() {
     <Stack
       direction="row"
       spacing={4}
-      sx={{ mt: 4, ml: 6, mt: 20, height: "60%", width: "90%" }}
+      sx={{ mt: 24, ml: 6, mt: 20, height: "60%", width: "90%" }}
     >
       <Box
         sx={{
